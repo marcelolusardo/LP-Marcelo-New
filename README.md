@@ -1,11 +1,15 @@
-# LP Marcelo Lusardo — Fase 4 (prévia)
+# LP Marcelo Lusardo — Fase 5 (prévia desktop e mobile)
 
-Esta é uma versão de demonstração para GitHub Pages, independente do site oficial.
+- Repositório de teste: LP-Marcelo-teste
+- Dashboard Pessoal/Empresarial integrado ao HTML, sem iframe ou rolagem interna.
+- Exibe 12 dimensões pessoais e 6 perspectivas empresariais, com 3 objetivos ilustrativos por modalidade.
+- Termos: Estado A, Estado Atual, Estado Desejado.
+- Foco em benefícios e CTA para mentoria.
+- Vídeos locais não incluídos nesta prévia.
+- Não incluir CNAME no repositório de testes.
+- Noindex/nofollow para evitar indexação.
+- Os dados demonstrativos não são resultados de mentorados.
+- A página de aplicativo é referenciada, sem afirmar que a prévia é captura real.
+- Não publicar no domínio oficial sem aprovação.
 
-- `index.html`: landing page completa com Método Pessoal e Empresarial, app, trajetória, livro e fotos.
-- `mapas/index.html`: dashboard interativo com gráficos e evolução (dados ilustrativos).
-- `assets/`: imagens e estilos existentes; sem vídeos locais pesados.
-
-Não configure `CNAME` ou domínio personalizado neste repositório.
-
-**Nota:** “Todos os direitos reservados” é um aviso de titularidade reivindicada e não significa registro de marca, patente ou reconhecimento jurídico automático. A metodologia BSC é atribuída a Kaplan e Norton.
+Atualização Fase 5.1: rodapé revisado, sem crédito a Halo Company; aviso de direitos autorais do Método Líder de Travessias, Mapa Estratégico das Travessias e Austrália Sem Fronteiras.
