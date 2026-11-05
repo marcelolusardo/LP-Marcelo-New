@@ -98,7 +98,23 @@
 /* Fotografia inteira da placa: sem corte no desktop e no celular */
 #youtube .proof-feature>img{width:100%;height:auto!important;max-height:none!important;aspect-ratio:auto;object-fit:contain!important;object-position:center!important;display:block;background:#f7f6fb}
 @media(max-width:850px){#youtube .proof-feature>img{width:100%;height:auto!important;max-height:none!important;object-fit:contain!important}}
-</style></head><body>
+</style>
+<style id="ajuste-final-hero-clareza-mobile">
+/* Vídeo mais visível; mantém contraste com o título */
+#inicio.hero::before {
+  background: linear-gradient(90deg, rgba(23,18,56,.49) 0%, rgba(23,18,56,.28) 58%, rgba(23,18,56,.12) 100%) !important;
+}
+@media (max-width:700px) {
+  #inicio.hero::before {
+    background: linear-gradient(90deg, rgba(23,18,56,.46), rgba(23,18,56,.22)) !important;
+  }
+  #hero-video { object-position:center center; }
+  #hero-play { right:14px; bottom:12px; max-width:calc(100% - 28px); }
+}
+#hero-video { filter:brightness(1.16) contrast(1.02); }
+#hero-play { z-index:8; }
+</style>
+</head><body>
 <header class="top"><div class="wrap"><a aria-label="Voltar ao início" href="#inicio"><img alt="No So Far Away por Marcelo Lusardo" class="logo" src="assets/img/logo-nsfa-dark.png"/></a><nav aria-label="Navegação" class="topnav"><a href="#self-business">Pessoal e Empresarial</a><a href="#mapas">Mapas Estratégicos</a><a href="#ferramenta">Aplicativo</a><a href="#global">Travessias globais</a><a href="#autoridade">Sobre Marcelo</a><a class="btn" href="#mentoria">Conhecer o Método</a></nav></div></header>
 <main>
 <section class="hero" id="inicio"><video aria-hidden="true" autoplay muted loop playsinline webkit-playsinline preload="auto" id="hero-video" poster="assets/img/hero-desktop-poster.jpg"><source src="assets/videos/hero-desktop.mp4" type="video/mp4"></video><button id="hero-play" class="hero-play" type="button" aria-label="Reproduzir vídeo de abertura" hidden>▶ Reproduzir vídeo</button><div class="wrap"><div class="eyebrow">MÉTODO LÍDER DE TRAVESSIAS · PESSOAL E EMPRESARIAL</div><h1>Sua vida e sua empresa merecem <em>um Mapa Estratégico de Travessias.</em></h1><p class="lead">Para quem deseja transformar a vida, a carreira ou um negócio: identifique seu ponto de partida, escolha a direção e construa um mapa estratégico com metas, indicadores e ações reais.</p><div class="actions"><a class="btn" href="#mapas">Quero conhecer meu Mapa Estratégico</a></div><p class="badge-line">Autoconhecimento + planejamento estratégico + execução acompanhada</p></div></section>
@@ -170,32 +186,54 @@ function drawRadar(mode){
 </script>
 <script id="correcao-video-20261105">
 (function(){
-  const video=document.getElementById('hero-video');
-  const button=document.getElementById('hero-play');
-  if(!video||!button)return;
-  const desktop='assets/videos/hero-desktop.mp4';
-  const mobile='assets/videos/hero-celular.mp4';
-  let current='';
-  function showPlay(){button.hidden=false;}
-  function attemptPlay(){
-    video.muted=true;
-    const p=video.play();
-    if(p&&typeof p.then==='function')p.then(()=>{button.hidden=true;}).catch(showPlay);
+  const video = document.getElementById('hero-video');
+  const button = document.getElementById('hero-play');
+  if (!video || !button) return;
+  const desktop = 'assets/videos/hero-desktop.mp4';
+  const mobile = 'assets/videos/hero-celular.mp4';
+  let selected = '';
+  let request = 0;
+  function reveal(label) {
+    button.textContent = label || '▶ Reproduzir vídeo';
+    button.hidden = false;
   }
-  function setSource(){
-    const next=window.matchMedia('(max-width:700px)').matches?mobile:desktop;
-    if(current===next)return;
-    current=next;
+  function playVideo() {
+    video.muted = true;
+    video.defaultMuted = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    const promise = video.play();
+    if (promise && typeof promise.then === 'function') {
+      promise.then(() => { button.hidden = true; }).catch(() => reveal('▶ Toque para reproduzir'));
+    }
+  }
+  function setSource() {
+    const isMobile = window.matchMedia('(max-width:700px)').matches;
+    const path = isMobile ? mobile : desktop;
+    if (path === selected) return;
+    selected = path;
     video.pause();
-    video.src=next;
+    video.poster = isMobile ? 'assets/img/hero-celular-poster.jpg' : 'assets/img/hero-desktop-poster.jpg';
+    video.src = path;
     video.load();
-    attemptPlay();
+    reveal('▶ Reproduzir vídeo');
+    video.addEventListener('canplay', playVideo, {once:true});
+    playVideo();
   }
-  button.addEventListener('click',()=>{video.muted=true;attemptPlay();});
-  video.addEventListener('error',showPlay);
-  video.addEventListener('playing',()=>{button.hidden=true;});
-  document.addEventListener('visibilitychange',()=>{if(!document.hidden)attemptPlay();});
-  window.addEventListener('resize',setSource,{passive:true});
+  button.addEventListener('click', function(){
+    if (video.error) { video.load(); }
+    playVideo();
+  });
+  video.addEventListener('playing', () => { button.hidden = true; });
+  video.addEventListener('pause', () => { if (!document.hidden) reveal('▶ Reproduzir vídeo'); });
+  video.addEventListener('error', () => reveal('▶ Tentar reproduzir vídeo'));
+  video.addEventListener('stalled', () => reveal('▶ Reproduzir vídeo'));
+  document.addEventListener('visibilitychange', () => { if (!document.hidden && video.paused) playVideo(); });
+  window.addEventListener('resize', () => {
+    clearTimeout(request);
+    request = setTimeout(setSource, 180);
+  }, {passive:true});
   setSource();
 })();
 </script></body></html>
