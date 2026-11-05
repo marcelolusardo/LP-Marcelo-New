@@ -1,16 +1,12 @@
-# LP Marcelo Lusardo — pacote completo de homologação para produção
+# Versão final candidata a publicação: Marcelo Lusardo
 
-Este pacote reúne o website da Fase 11 e os cinco vídeos MP4, com os arquivos nas pastas esperadas pelo HTML. NÃO muda o site oficial automaticamente.
+Inclui vídeo original de abertura desktop e celular, foto original de Marcelo com a placa YouTube de 100 mil inscritos, vídeo incorporado do YouTube, cinco depoimentos locais, áudios e mapas.
 
-## Procedimento seguro
-1. Faça backup do repositório de produção e preserve o CNAME do domínio oficial.
-2. Envie o conteúdo DESTA pasta (não a pasta contêiner nem o ZIP) ao repositório `LP-Marcelo-teste` via Add file > Upload files, em lotes se necessário. Confirme que os cinco MP4 aparecem em `assets/videos/`.
-3. Espere Actions/Pages concluir e teste desktop/mobile, cinco vídeos, áudios, WhatsApp, vídeo YouTube, mapas e botões.
-4. Confirme autorização de publicação dos depoimentos e da conversa de WhatsApp.
-5. Só depois de aprovação explícita, faça backup e transfira os arquivos para o repositório que realmente atende marcelolusardo.com.br. Preserve DNS e CNAME; não configure o domínio oficial no repositório de teste.
+## Importante
+O arquivo CNAME foi copiado do repositório de produção original para preservar o domínio, mas ESTE ZIP NÃO ALTERA NENHUM SITE AUTOMATICAMENTE. Faça backup e teste primeiro em ambiente de homologação. NÃO coloque o CNAME no repositório de testes, pois ele aponta o domínio oficial.
 
-## Verificação técnica
-Todos os caminhos locais src/href/poster no HTML foram verificados contra arquivos deste pacote. Isso não comprova que YouTube permita incorporação ou que todos os codecs reproduzam em cada dispositivo; teste no navegador.
+Para testar no repositório LP-Marcelo-teste, remova CNAME antes do upload. Para publicar no repositório oficial, mantenha CNAME e confirme que o repositório oficial é o atualmente associado ao domínio.
 
-## Limitações
-Não há vídeo original identificado com segurança de Gabriel neste pacote. A seção de Rodrigo utiliza imagem da conversa e áudio; o vídeo referido é externo.
+Teste em desktop e mobile o vídeo de fundo, navegação, mapas, vídeo YouTube, cinco depoimentos, áudios e links. A reprodução de vídeos externos depende das permissões da plataforma e conexão. Confirme direitos/autorização dos depoimentos e conversas privadas antes de publicar.
+
+O vídeo de fundo é decorativo, mudo e em loop, como é comum para autoplay nos navegadores. Não é possível garantir autoplay em todos os dispositivos.
