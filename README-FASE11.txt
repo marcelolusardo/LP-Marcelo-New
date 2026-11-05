@@ -1,0 +1,1 @@
+FASE 11: depoimentos originais, audio de WhatsApp, placa do YouTube e video incorporado. Envie index.html, assets/css, assets/img, assets/audio e assets/videos. Nao inclua CNAME de producao. Os videos locais sao arquivos grandes: enviar em lotes se necessario. Dados e autorizacoes devem ser validados antes de publicar no dominio oficial.
