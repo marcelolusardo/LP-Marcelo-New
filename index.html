@@ -293,6 +293,16 @@ function drawRadar(mode){
 .modal-livro-close{position:sticky;top:10px;float:right;margin:10px 12px 0 0;border:0;background:#f0eef7;border-radius:50%;width:42px;height:42px;font-size:26px;cursor:pointer;z-index:2}
 .modal-livro-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
 .modal-livro-actions a{display:inline-block;text-decoration:none}
+.ofertas-livro{display:grid;gap:10px;margin:18px 0}
+.oferta-livro{display:flex;align-items:center;justify-content:space-between;gap:12px;border:2px solid #e6e2f0;border-radius:13px;padding:14px;cursor:pointer;background:#fff}
+.oferta-livro:has(input:checked){border-color:#6c4fd5;background:#f7f4ff}
+.oferta-livro input{accent-color:#6c4fd5;margin-right:8px}
+.oferta-livro strong{display:block;font-size:1rem}
+.oferta-livro small{display:block;color:#635d75;line-height:1.45;margin-top:3px}
+.oferta-livro .preco{font-size:1.2rem;font-weight:800;white-space:nowrap}
+.oferta-livro .economia{font-size:.76rem;color:#286748;display:block;text-align:right}
+.modal-livro-actions button:disabled{opacity:.7;cursor:not-allowed}
+
 .modal-livro-secondary{background:#f0eef7;border:0;border-radius:30px;padding:14px 20px;font-weight:700;cursor:pointer;color:#211a4e}
 @media(max-width:650px){.modal-livro-layout{grid-template-columns:1fr;padding:18px;gap:12px}.modal-livro-layout img{max-height:240px}.modal-livro-layout h2{font-size:1.65rem}}
 </style>
@@ -303,10 +313,16 @@ function drawRadar(mode){
 <div><div class="eyebrow">CONHEÇA O LIVRO</div><h2 id="modal-livro-titulo">Austrália Sem Fronteiras</h2>
 <p>Uma história de travessia, escolhas e transformação internacional que inspirou o Método Líder de Travessias.</p>
 <p>Conheça a trajetória e os aprendizados do autor nesta obra.</p>
-<div class="modal-livro-actions"><a class="btn" href="https://loja.filoseditora.com.br/autor/marcelo-lusardo" target="_blank" rel="noopener noreferrer">Finalizar compra ↗</a><button type="button" class="modal-livro-secondary" id="continuar-lp">Continuar na LP</button></div>
-<p class="small">A compra é concluída na loja da editora, em uma nova aba. Esta página permanece aberta.</p>
+<fieldset class="ofertas-livro" style="border:0;padding:0" aria-label="Escolha sua oferta">
+<label class="oferta-livro"><span><input type="radio" name="oferta-travessia" value="ebook" checked><strong>Livro digital (e-book)</strong><small>Austrália Sem Fronteiras · acesso digital</small></span><span class="preco">R$ 47</span></label>
+<label class="oferta-livro"><span><input type="radio" name="oferta-travessia" value="encontro"><strong>Encontro introdutório online</strong><small>Conheça o Método Líder de Travessias</small></span><span class="preco">R$ 97</span></label>
+<label class="oferta-livro"><span><input type="radio" name="oferta-travessia" value="combo"><strong>Combo: e-book + encontro</strong><small>Os dois produtos em uma oferta especial</small></span><span><span class="preco">R$ 127</span><span class="economia">Economize R$ 17</span></span></label>
+</fieldset>
+<p style="margin:8px 0"><strong>Total: <span id="total-oferta">R$ 47,00</span></strong></p>
+<div class="modal-livro-actions"><button class="btn" type="button" disabled aria-describedby="checkout-aviso">Finalizar compra — em preparação</button><button type="button" class="modal-livro-secondary" id="continuar-lp">Continuar na LP</button></div>
+<p class="small" id="checkout-aviso">Ofertas de lançamento do Instituto Líder de Travessias. Checkout ainda não ativado: nenhum pagamento será cobrado. Disponibilidade e entrega digital serão confirmadas antes da abertura das vendas.</p>
 </div></div></dialog>
 <script>
-(()=>{const modal=document.getElementById('modal-livro');const trigger=document.getElementById('abrir-livro');if(!modal||!trigger)return;trigger.addEventListener('click',()=>{if(typeof modal.showModal==='function')modal.showModal();else modal.setAttribute('open','')});const close=()=>{if(typeof modal.close==='function')modal.close();else modal.removeAttribute('open')};modal.querySelector('.modal-livro-close').addEventListener('click',close);document.getElementById('continuar-lp').addEventListener('click',close);modal.addEventListener('click',e=>{if(e.target===modal)close()})})();
+(()=>{const modal=document.getElementById('modal-livro');const trigger=document.getElementById('abrir-livro');if(!modal||!trigger)return;trigger.addEventListener('click',()=>{if(typeof modal.showModal==='function')modal.showModal();else modal.setAttribute('open','')});const close=()=>{if(typeof modal.close==='function')modal.close();else modal.removeAttribute('open')};modal.querySelector('.modal-livro-close').addEventListener('click',close);document.getElementById('continuar-lp').addEventListener('click',close);const precos={ebook:'R$ 47,00',encontro:'R$ 97,00',combo:'R$ 127,00'};modal.querySelectorAll('input[name="oferta-travessia"]').forEach(r=>r.addEventListener('change',()=>{if(r.checked)document.getElementById('total-oferta').textContent=precos[r.value]}));modal.addEventListener('click',e=>{if(e.target===modal)close()})})();
 </script>
 </body></html>
