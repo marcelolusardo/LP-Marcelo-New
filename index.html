@@ -88,10 +88,75 @@
 @media(max-width:850px){.certs{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.media{aspect-ratio:9/16;max-height:560px}.certs{gap:10px}.certs figure{min-width:0}.certs img{height:125px}.media-card{padding:0!important}.media-card .desc{padding:16px}}
 @media(prefers-reduced-motion:reduce){#hero-video{display:none}.hero{background:linear-gradient(90deg,#171238ee,#171238aa),url('assets/img/marcelo-mentor.jpg') center/cover}}
-</style></head><body>
+</style><style id="correcao-video-foto-20261105">
+/* Sobreposição azul mais clara, sem sacrificar a leitura do texto */
+.hero::before{background:linear-gradient(90deg,rgba(23,18,56,.76) 0%,rgba(23,18,56,.57) 55%,rgba(23,18,56,.34) 100%)!important;pointer-events:none}
+@media(max-width:700px){.hero::before{background:linear-gradient(90deg,rgba(23,18,56,.74),rgba(23,18,56,.51))!important}}
+#hero-video{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;pointer-events:none}
+.hero-play{position:absolute;right:20px;bottom:18px;z-index:3;background:#d7ad59;color:#171238;border:0;border-radius:999px;padding:10px 16px;font:700 13px Arial,sans-serif;cursor:pointer;box-shadow:0 3px 12px #0004}
+.hero-play[hidden]{display:none!important}
+/* Fotografia inteira da placa: sem corte no desktop e no celular */
+#youtube .proof-feature>img{width:100%;height:auto!important;max-height:none!important;aspect-ratio:auto;object-fit:contain!important;object-position:center!important;display:block;background:#f7f6fb}
+@media(max-width:850px){#youtube .proof-feature>img{width:100%;height:auto!important;max-height:none!important;object-fit:contain!important}}
+</style>
+<style id="ajuste-final-hero-clareza-mobile">
+/* Vídeo mais visível; mantém contraste com o título */
+#inicio.hero::before {
+  background: linear-gradient(90deg, rgba(23,18,56,.49) 0%, rgba(23,18,56,.28) 58%, rgba(23,18,56,.12) 100%) !important;
+}
+@media (max-width:700px) {
+  #inicio.hero::before {
+    background: linear-gradient(90deg, rgba(23,18,56,.46), rgba(23,18,56,.22)) !important;
+  }
+  #hero-video { object-position:center center; }
+  #hero-play { right:14px; bottom:12px; max-width:calc(100% - 28px); }
+}
+#hero-video { filter:brightness(1.16) contrast(1.02); }
+#hero-play { z-index:8; }
+</style>
+<style id="correcao-definitiva-video-20261105">
+/* A camada do vídeo deve ficar visível acima do fundo sólido do hero. */
+#inicio.hero { position:relative; isolation:isolate; overflow:hidden; background:#171238!important; }
+#inicio #hero-video {
+  position:absolute!important; inset:0!important; z-index:0!important;
+  display:block!important; width:100%!important; height:100%!important;
+  object-fit:cover!important; object-position:center center;
+  filter:brightness(1.13) contrast(1.02);
+  pointer-events:none;
+}
+#inicio.hero::before {
+  content:""; position:absolute; inset:0; z-index:1!important;
+  background:linear-gradient(90deg,rgba(23,18,56,.60) 0%,rgba(23,18,56,.42) 56%,rgba(23,18,56,.26) 100%)!important;
+  pointer-events:none;
+}
+#inicio.hero > .wrap { position:relative; z-index:2!important; }
+#inicio #hero-play {
+  position:absolute; z-index:4!important; right:20px; bottom:18px;
+  background:#d7ad59; color:#171238; border:0; border-radius:999px;
+  padding:12px 18px; font:700 14px Inter,Arial,sans-serif;
+  cursor:pointer; box-shadow:0 4px 18px rgba(0,0,0,.35);
+}
+#inicio #hero-play[hidden] { display:none!important; }
+#youtube .proof-feature > img {
+  display:block; width:100%; height:auto!important; max-height:none!important;
+  aspect-ratio:auto!important; object-fit:contain!important; object-position:center!important;
+}
+@media(max-width:700px) {
+  #inicio.hero::before {
+    background:linear-gradient(90deg,rgba(23,18,56,.63),rgba(23,18,56,.38))!important;
+  }
+  #inicio #hero-play { left:24px; right:auto; bottom:14px; max-width:calc(100% - 48px); }
+  #inicio.hero { padding-bottom:100px!important; }
+}
+@media(prefers-reduced-motion:reduce) {
+  /* Respeita a preferência do sistema; reprodução continua possível pelo botão. */
+  #inicio #hero-video { display:block!important; }
+}
+</style>
+</head><body>
 <header class="top"><div class="wrap"><a aria-label="Voltar ao início" href="#inicio"><img alt="No So Far Away por Marcelo Lusardo" class="logo" src="assets/img/logo-nsfa-dark.png"/></a><nav aria-label="Navegação" class="topnav"><a href="#self-business">Pessoal e Empresarial</a><a href="#mapas">Mapas Estratégicos</a><a href="#ferramenta">Aplicativo</a><a href="#global">Travessias globais</a><a href="#autoridade">Sobre Marcelo</a><a class="btn" href="#mentoria">Conhecer o Método</a></nav></div></header>
 <main>
-<section class="hero" id="inicio"><video aria-hidden="true" autoplay="True" id="hero-video" loop="True" muted="True" playsinline="True" preload="metadata"><source media="(min-width: 701px)" src="assets/videos/hero-desktop.mp4" type="video/mp4"/><source src="assets/videos/hero-celular.mp4" type="video/mp4"/></video><div class="wrap"><div class="eyebrow">MÉTODO LÍDER DE TRAVESSIAS · PESSOAL E EMPRESARIAL</div><h1>Sua vida e sua empresa merecem <em>um Mapa Estratégico de Travessias.</em></h1><p class="lead">Para quem deseja transformar a vida, a carreira ou um negócio: identifique seu ponto de partida, escolha a direção e construa um mapa estratégico com metas, indicadores e ações reais.</p><div class="actions"><a class="btn" href="#mapas">Quero conhecer meu Mapa Estratégico</a></div><p class="badge-line">Autoconhecimento + planejamento estratégico + execução acompanhada</p></div></section>
+<section class="hero" id="inicio"><video aria-hidden="true" autoplay muted loop playsinline webkit-playsinline preload="auto" id="hero-video" poster="assets/img/hero-desktop-poster.jpg"><source src="assets/videos/hero-desktop.mp4" type="video/mp4"></video><button id="hero-play" class="hero-play" type="button" aria-label="Reproduzir vídeo de abertura">▶ Reproduzir vídeo</button><div class="wrap"><div class="eyebrow">MÉTODO LÍDER DE TRAVESSIAS · PESSOAL E EMPRESARIAL</div><h1>Sua vida e sua empresa merecem <em>um Mapa Estratégico de Travessias.</em></h1><p class="lead">Para quem deseja transformar a vida, a carreira ou um negócio: identifique seu ponto de partida, escolha a direção e construa um mapa estratégico com metas, indicadores e ações reais.</p><div class="actions"><a class="btn" href="#mapas">Quero conhecer meu Mapa Estratégico</a></div><p class="badge-line">Autoconhecimento + planejamento estratégico + execução acompanhada</p></div></section>
 <section class="section light" id="beneficios"><div class="wrap"><div class="eyebrow">O QUE O MENTORADO LEVA</div><h2>Menos dispersão. Mais clareza, decisões e resultados acompanháveis.</h2><p class="intro">O Método Líder de Travessias foi estruturado para converter reflexão em direção prática. O resultado depende da aplicação e das circunstâncias de cada pessoa ou empresa.</p><div class="grid"><article class="card"><span class="tag">01 · DIAGNÓSTICO</span><h3>Enxergue seu Estado A</h3><p>Reconheça forças, limitações, crenças, prioridades e os principais desequilíbrios da sua vida ou operação.</p></article><article class="card"><span class="tag">02 · DESTINO</span><h3>Defina seu Estado Desejado</h3><p>Transforme desejos genéricos em objetivos estratégicos e metas claras, com horizonte e critérios de sucesso.</p></article><article class="card"><span class="tag">03 · MAPA</span><h3>Desenhe sua estratégia</h3><p>Construa um Mapa Estratégico da Pessoa ou do Negócio, conectando objetivos e relações de causa e efeito.</p></article><article class="card"><span class="tag">04 · EXECUÇÃO</span><h3>Saiba o que fazer</h3><p>Organize iniciativas, prioridades, responsáveis e prazos em um plano de ação aplicável à sua realidade.</p></article><article class="card"><span class="tag">05 · INDICADORES</span><h3>Meça sua evolução</h3><p>Use indicadores e revisões periódicas para identificar avanços, gargalos e a necessidade de ajustar a rota.</p></article><article class="card"><span class="tag">06 · AUTORIDADE</span><h3>Construa consistência</h3><p>Fortaleça sua capacidade de decidir, executar, liderar e desenvolver um legado coerente com seus valores.</p></article></div></div></section>
 <section class="section purple" id="self-business"><div class="wrap"><div class="eyebrow">UM MÉTODO · DUAS FRENTES</div><h2>Qual travessia você precisa liderar?</h2><div class="grid two"><article class="card"><span class="tag">SELF · PESSOA</span><h3>Você como projeto estratégico</h3><p>Para recomeços, transições de carreira, propósito, hábitos, equilíbrio, liderança pessoal e mudanças de país.</p><p>Você sairá com prioridades mais claras, objetivos mensuráveis e um caminho de execução adequado à sua realidade.</p></article><article class="card"><span class="tag">BUSINESS · NEGÓCIO</span><h3>Sua empresa com direção</h3><p>Para empreendedores, gestores e líderes que precisam alinhar visão, posicionamento, prioridades, equipes e execução.</p><p>Você sairá com prioridades mais claras, objetivos mensuráveis e um caminho de execução adequado à sua realidade.</p></article></div></div></section>
 <!-- FASE 9: MAPAS NATIVOS, RADAR SVG, TABELA KPI E EVOLUCAO -->
@@ -158,4 +223,54 @@ function drawRadar(mode){
  drawRadar('pessoal');
 })();
 </script>
-</body></html>
+<script id="correcao-video-20261105">
+(function () {
+  const video = document.getElementById('hero-video');
+  const button = document.getElementById('hero-play');
+  if (!video || !button) return;
+
+  const media = window.matchMedia('(max-width: 700px)');
+  const desktop = 'assets/videos/hero-desktop.mp4';
+  const mobile = 'assets/videos/hero-celular.mp4';
+  let current = '';
+
+  function showPlay() {
+    button.hidden = false;
+    button.textContent = '▶ Assistir ao vídeo';
+  }
+  function tryAutoplay() {
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    const p = video.play();
+    if (p && typeof p.catch === 'function') p.catch(showPlay);
+  }
+  function chooseVideo() {
+    const path = media.matches ? mobile : desktop;
+    if (path === current) return;
+    current = path;
+    video.pause();
+    video.poster = media.matches
+      ? 'assets/img/hero-celular-poster.jpg'
+      : 'assets/img/hero-desktop-poster.jpg';
+    video.src = path;
+    video.load();
+    showPlay();
+    tryAutoplay();
+  }
+  button.addEventListener('click', function () {
+    // This play() runs directly in the user's tap/click gesture.
+    if (video.error) video.load();
+    video.muted = true;
+    video.playsInline = true;
+    const p = video.play();
+    if (p && typeof p.catch === 'function') p.catch(showPlay);
+  });
+  video.addEventListener('playing', function () { button.hidden = true; });
+  video.addEventListener('error', showPlay);
+  video.addEventListener('pause', function () { if (!video.ended) showPlay(); });
+  if (media.addEventListener) media.addEventListener('change', chooseVideo);
+  else if (media.addListener) media.addListener(chooseVideo);
+  chooseVideo();
+})();
+</script></body></html>
