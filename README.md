@@ -1,10 +1,11 @@
-# LP Marcelo Lusardo — Fase 3 (prévia GitHub Pages)
+# LP Marcelo Lusardo — Fase 4 (prévia)
 
-- Método Líder de Travessias SELF & BUSINESS em primeiro lugar.
-- Benefícios e entregáveis do mentorado, BSC e cinco etapas.
-- Travessias globais, Austrália Sem Fronteiras como solução complementar.
-- Biografia, certificados, Academia Independente de Letras, vídeos em modo pôster e livro sem checkout.
-- Sem CNAME; noindex/nofollow; não altera domínio oficial.
-- Vídeos locais omitidos da prévia; restaurar somente após aprovação.
-- Preço R$97 é sugestão ainda não aprovada; não há checkout.
-- Alegações biográficas (aplicação desde 2009, mais de 40 países) baseadas em informações fornecidas pelo titular, pendentes de revisão editorial antes da publicação final.
+Esta é uma versão de demonstração para GitHub Pages, independente do site oficial.
+
+- `index.html`: landing page completa com Método Pessoal e Empresarial, app, trajetória, livro e fotos.
+- `mapas/index.html`: dashboard interativo com gráficos e evolução (dados ilustrativos).
+- `assets/`: imagens e estilos existentes; sem vídeos locais pesados.
+
+Não configure `CNAME` ou domínio personalizado neste repositório.
+
+**Nota:** “Todos os direitos reservados” é um aviso de titularidade reivindicada e não significa registro de marca, patente ou reconhecimento jurídico automático. A metodologia BSC é atribuída a Kaplan e Norton.
